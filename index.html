@@ -79,13 +79,13 @@
         </div>
 
         <ul class="SideBar">
-            <li class="close-menu-button" onclick=closeSideBar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <li class="close-menu-button" onclick=closeSideBar()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
             <li><a href="https://www.microsoft.com/ru-ru/download/windows">Home</a></li>
             <li><a href="https://ru.wikipedia.org/wiki/Windows_Aero">Game</a></li>
             <li><a href="https://fluent2.microsoft.design">Features</a></li>
             <li><a href="https://t.me/s/prohitec">Eng</a></li>
             <li><a href="https://t.me/s/prohitec">Ru</a></li>
-            <li><a class="cta" href="https://t.me/s/prohitec">Play the Beta</a></li>
+            <li><a class="cta" onclick=OpenRegWindow()>Play the Beta</a></li>
 
         </ul>
         <ul>
@@ -96,8 +96,8 @@
             <li class="hideMainBar"><a href="https://fluent2.microsoft.design">Features</a></li>
             <li class="hideMainBar"><a href="https://t.me/s/prohitec">Eng</a></li>
             <li class="hideMainBar"><a href="https://t.me/s/prohitec">Ru</a></li>
-            <li><a class="cta double" href="https://t.me/s/prohitec">Play the Beta</a></li>
-            <li class="burger-menu" onclick=showSideBar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            <li><a class="hideMainBar cta double" onclick=OpenRegWindow()>Play the Beta</a></li>
+            <li class="burger-menu" onclick=showSideBar()><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
     </nav>
     <script>
@@ -139,7 +139,7 @@
         <a href="#"><img src="img/mail.png"></a>
     </div>
 
-    <a class="cta-button">REGISTER FOR BETA</a>
+    <a class="cta-button" onclick=OpenRegWindow()>REGISTER FOR BETA</a>
 
     <div class="section date">
         FEBRUARY 21–23TH, 2023
@@ -186,6 +186,39 @@
 
     
     </footer>
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+        <span class="close-button" onclick=CloseRegWindow()>&times;</span>
+            <h2>Регистрация на бета-тест</h2>
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="Ваше имя" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="E-mail" required><br><br>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        </div>
+    </div>
+    <script>
+        const modal = document.getElementById('registrationModal');
+        
 
+        function OpenRegWindow(){
+            modal.style.display = 'flex'
+        }
+
+        function CloseRegWindow(){
+            modal.style.display = 'none'
+        }
+
+        window.addEventListener('click', function(e){
+            console.log(e.target); 
+            if(e.target === modal){
+            modal.style.display = 'none'; 
+            }
+        });
+
+    
+</script>
 </body>
 </html>
